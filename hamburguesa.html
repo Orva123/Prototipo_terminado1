@@ -1,0 +1,186 @@
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamburguesa</title>
+  <!-- Aquí enlazamos el CSS -->
+  <link rel="stylesheet" href="hamburguesa.css">
+</head>
+<body>
+
+
+  <canvas id="particles-bg"></canvas>
+
+  <header class="navegacion">
+    <div class="logo" id="hoda">
+      <img src="img/logo.png" alt="FoodwaGon logo">
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <ul id="hola">
+        <li><a href="index.html">Menú</a></li>
+        <li><a href="perros.html">Perros</a></li>
+        <li><a href="salshipapa.html">Salchipapas</a></li>
+        <li><a href="bebidas.html">Bebidas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+   <header>
+    <h1>Hamburguesas</h1>
+    <p>¡Disfruta del sabor más fresco y natural!</p>
+  </header>
+ 
+
+  <!-- Intro -->
+  <section class="intro">
+    <h2>Ponle sabor a tu día</h2>
+    <p> ¡Prueba la explosión de sabor en cada mordisco!</p>
+  </section>
+
+    <!-- Cards hamburguesas -->
+    <div class="cards">
+  <div class="card">
+    <img src="https://www.serargentino.com/public/images/2021/01/16109941330-17-burger-773x458.jpg" alt="Salchipapa Clásica">
+    <h3>Clásica</h3>
+    <p>pan suave, carne jugosa, queso cheddar fundido, lechuga fresca y tomate. ¡Un clásico que nunca falla!.</p>
+    <a href="#" class="btn">$15.000</a>
+    
+  </div>
+
+  <div class="card">
+    <img src="https://chefeel.com/chefgeneralfiles/2021/07/front-view-burger-on-stand-scaled.jpg" alt="Salchipapa BBQ">
+    <h3>BBQ</h3>
+    <p> Una combinación irresistible de carne a la parrilla, cebolla caramelizada, queso derretido y nuestra salsa barbacoa ahumada. ¡Sabor que enamora!</p>
+    <a href="#" class="btn">$20.000</a>
+  </div>
+
+  <div class="card">
+    <img src="https://img.freepik.com/fotos-premium/hamburguesa-doble-carne-cebolla-caramelizada-plato-negro-sobre-fondo-llamas_126277-1715.jpg" alt="Salchipapa Mixta">
+    <h3>doble</h3>
+    <p>Dos carnes premium de res, queso cheddar extra, lechuga fresca y tomate en pan artesanal. ¡El doble de sabor!.</p>
+    <a href="#" class="btn">$27.000</a>
+  </div>
+
+  <div class="card">
+    <img src="https://www.conasi.eu/blog/wp-content/uploads/2022/05/hamburguesa-vegana-1.jpg" alt="Salchipapa Veggie">
+    <h3>Veggie</h3>
+    <p> Una opción fresca y saludable con garbanzos, vegetales salteados, aguacate cremoso y salsa casera. ¡Ligera, nutritiva y llena de sabor!</p>
+    <a href="#" class="btn">$22.000</a>
+  </div>
+  <div class="card">
+    <img src="https://www.hola.com/horizon/landscape/aab0370ef079-burguer-pollo-adob-t.jpg" alt="Salchipapa Veggie">
+    <h3>pollo</h3>
+    <p> Crujiente por fuera y jugoso por dentro: pechuga de pollo empanizada, lechuga fresca, tomate y salsa especial en pan artesanal. ¡Un favorito del público!</p>
+    <a href="#" class="btn">$26.000</a>
+  </div>
+  <div class="card">
+    <img src="https://cdn.aarp.net/content/dam/aarp/food/recipes/2016/06/1140-cuban-style-pork-burger-esp.jpg" alt="Salchipapa Veggie">
+    <h3>cerdo</h3>
+    <p> Carne de cerdo desmechada, marinada y bañada en salsa barbacoa, acompañada de ensalada fresca y pan suave. ¡Un festín de sabor ahumado!</p>
+    <a href="#" class="btn">$27.000</a>
+  </div>
+</div>
+    
+</div>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>📞 Contáctanos: 300 000 0000 | 📧 jorlan.comidas.com</p>
+    <p>&copy; 2025 JORLAN</p>
+  </footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navUl = document.getElementById('hola');
+
+  menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+  });
+
+  // Opcional: Cierra el menú al hacer clic en un enlace
+  navUl.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navUl.classList.remove('open');
+      menuToggle.classList.remove('active');
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+  // particles.js
+const canvas = document.getElementById('particles-bg');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+
+
+
+
+
+
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function createParticles() {
+  particles = [];
+  for (let i = 0; i < 60; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.5,
+      dy: (Math.random() - 0.5) * 0.5,
+      color: `rgba(255,179,71,${Math.random() * 0.5 + 0.2})`
+    });
+  }
+}
+createParticles();
+window.addEventListener('resize', createParticles);
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let p of particles) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+    ctx.fillStyle = p.color;
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+
+
+
+
+</script>
+
+</body>
+</html>

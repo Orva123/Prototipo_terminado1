@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salchipapas</title>
+  <!-- Aquí enlazamos el CSS -->
+  <link rel="stylesheet" href="salchipapa.css">
+</head>
+<body>
+
+  <canvas id="particles-bg"></canvas>
+
+  <header class="navegacion">
+    <div class="logo" id="hoda">
+      <img src="img/logo.png" alt="FoodwaGon logo">
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <ul id="hola">
+        <li><a href="index.html">Menú</a></li>
+        <li><a href="hamburguesa.html">Hamburguesas</a></li>
+        <li><a href="perros.html">Perros</a></li>
+        <li><a href="bebidas.html">Bebidas</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+   <header>
+    <h1>Salchipapas</h1>
+    <p>¡Disfruta del sabor más fresco y natural!</p>
+  </header>
+  
+
+  <!-- Intro -->
+  <section class="intro">
+    <h2>Ponle sabor a tu día</h2>
+    <p>Crocantes papas doraditas, acompañadas de salchicha jugosa, queso derretido y una explosión de salsas que te harán querer más en cada bocado.</p>
+  </section>
+
+    <!-- Cards hamburguesas -->
+    <div class="cards">
+  <div class="card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROH1g9MqDtcs8oapDJYCKitPom4xlc_h3wYQ&s" alt="Salchipapa Clásica">
+    <h3>Clásica</h3>
+    <p>Papas fritas doradas con salchicha tradicional y salsas al gusto.</p>
+    <a href="#" class="btn">$15.000</a>
+  </div>
+
+  <div class="card">
+    <img src="https://media-cdn.tripadvisor.com/media/photo-m/1280/1c/64/37/f8/alitas-bbq-con-salchipapa.jpg" alt="Salchipapa BBQ">
+    <h3>BBQ</h3>
+    <p>Papas crocantes con salchicha, trozos de pollo, queso fundido y salsa barbacoa.</p>
+    <a href="#" class="btn">$20.000</a>
+  </div>
+
+  <div class="card">
+    <img src="img/img_5b5f1aee18d842dfdcee9e783cedf3dd (2).webp" alt="Salchipapa Mixta">
+    <h3>Mixta</h3>
+    <p>Combinación de salchicha, carne desmechada y chorizo sobre papas crujientes.</p>
+    <a href="#" class="btn">$27.000</a>
+  </div>
+
+  <div class="card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcJMQyVr88T6VZ45-_0oFG_FqAyxF-CMgE7A&s" alt="Salchipapa Veggie">
+    <h3>Veggie</h3>
+    <p>Papas fritas acompañadas de vegetales salteados, aguacate y salsas caseras.</p>
+    <a href="#" class="btn">$20.000</a>
+  </div>
+  <div class="card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNYUQYOHfeg3pX933gXOb6SOrGFdQMSa2FuA&s" alt="Salchipapa Veggie">
+    <h3>Costeña</h3>
+    <p>Papas fritas doradas con salchicha, queso costeño rallado, plátano maduro y un toque de suero costeño. Un sabor tropical que refresca el paladar.</p>
+    <a href="#" class="btn">$30.000</a>
+  </div>
+  <div class="card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUIGbNs2InPvGKEELpPXzHlF4pB3MrhSKFoA&s" alt="Salchipapa Veggie">
+    <h3>boyacense</h3>
+    <p>Papas criollas con salchicha campesina, chorizo boyacense, huevo de codorniz y hogao casero. Tradición boyacense en cada bocado.</p>
+    <a href="#" class="btn">$30.000</a>
+  </div>
+</div>
+    
+</div>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>📞 Contáctanos: 300 000 0000 | 📧 jorlan.comidas.com</p>
+    <p>&copy; 2025 JORLAN</p>
+  </footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navUl = document.getElementById('hola');
+
+  menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+  });
+
+  // Opcional: Cierra el menú al hacer clic en un enlace
+  navUl.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navUl.classList.remove('open');
+      menuToggle.classList.remove('active');
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+  // particles.js
+const canvas = document.getElementById('particles-bg');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+
+
+
+
+
+
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function createParticles() {
+  particles = [];
+  for (let i = 0; i < 60; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.5,
+      dy: (Math.random() - 0.5) * 0.5,
+      color: `rgba(255,179,71,${Math.random() * 0.5 + 0.2})`
+    });
+  }
+}
+createParticles();
+window.addEventListener('resize', createParticles);
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let p of particles) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+    ctx.fillStyle = p.color;
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+
+
+
+
+</script>
+           
+
+</body>
+</html>

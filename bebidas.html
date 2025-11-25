@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bebidas Refrescantes</title>
+  <link rel="stylesheet" href="bebidas.css">
+</head>
+<body>
+
+  <canvas id="particles-bg"></canvas>
+
+  <header class="navegacion">
+    <div class="logo" id="hoda">
+      <img src="img/logo.png" alt="FoodwaGon logo">
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav>
+      <ul id="hola">
+        <li><a href="index.html">Menú</a></li>
+        <li><a href="hamburguesa.html">Hamburguesas</a></li>
+        <li><a href="salshipapa.html">Salchipapas</a></li>
+        <li><a href="perros.html">Perros</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Encabezado -->
+  <header>
+    <h1>Bebidas Refrescantes</h1>
+    <p>¡Disfruta del sabor más fresco y natural!</p>
+  </header>
+  
+
+  <!-- Intro -->
+  <section class="intro">
+    <h2>Refresca tu día</h2>
+    <p>Nuestras bebidas están hechas con ingredientes naturales, sin conservantes y con el mejor sabor tropical.</p>
+  </section>
+
+  <!-- Productos -->
+  <section class="productos">
+    <div class="producto">
+      <img src="img/Limon.webp" alt="Bebida de limón">
+      <h3>Limonada Fresh</h3>
+      <p>Bebida cítrica con un toque de menta.</p>
+      <a href="#" class="btn">$5.000</a>
+    </div>
+    <div class="producto">
+      <img src="img/Bebidafresa.jpg" alt="Bebida de fresa">
+      <h3>Fresa Cool</h3>
+      <p>Dulce y refrescante con sabor a fresa natural.</p>
+      <a href="#" class="btn">7.000</a>
+    </div>
+    <div class="producto">
+      <img src="img/SMOOTHIE_MANGO.avif" alt="Bebida de mango">
+      <h3>Mango Twist</h3>
+      <p>Exótica mezcla de mango con un toque tropical.</p>
+      <a href="#" class="btn">$6.500</a>
+    </div>
+     <div class="producto">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ64iMrmO5SQ7MvIhK3_VWDbg4ByLmLcmbYQ&s" alt="Bebida de limón">
+      <h3>Limonada cerezada</h3>
+      <p>deliciosa limonada con rica cereza</p>
+      <a href="#" class="btn">$5.000</a>
+    </div>
+    <div class="producto">
+      <img src="https://i.ytimg.com/vi/9qvc3hCeVsg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCbe8CMtLmrOKdm2aqTqJAJyJf0Kg" alt="Bebida de fresa">
+      <h3>limonada hierbabuena</h3>
+      <p>Dulce y refrescante con sabor a menta.</p>
+      <a href="#" class="btn">$6.000</a>
+    </div>
+    <div class="producto">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2k0swut8RnGFrO4u7rvWCbjxFrYPrbEkXdw&s" alt="Bebida de mango">
+      <h3>Mango limon</h3>
+      <p>Exótica mezcla de mango con un toque acido.</p>
+      <a href="#" class="btn">6.500</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>📞 Contáctanos: 300 000 0000 | 📧 jorlan.comidas.com</p>
+    <p>&copy; 2025 JORLAN</p>
+  </footer>
+
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navUl = document.getElementById('hola');
+
+  menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+  });
+
+  // Opcional: Cierra el menú al hacer clic en un enlace
+  navUl.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navUl.classList.remove('open');
+      menuToggle.classList.remove('active');
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+  // particles.js
+const canvas = document.getElementById('particles-bg');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+
+
+
+
+
+
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function createParticles() {
+  particles = [];
+  for (let i = 0; i < 60; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.5,
+      dy: (Math.random() - 0.5) * 0.5,
+      color: `rgba(255,179,71,${Math.random() * 0.5 + 0.2})`
+    });
+  }
+}
+createParticles();
+window.addEventListener('resize', createParticles);
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let p of particles) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+    ctx.fillStyle = p.color;
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
